@@ -6,7 +6,7 @@
     <Company>Joe Coutcher</Company>
     <TargetFrameworks>netstandard1.0;net46;net451;net45;net40;net35</TargetFrameworks>
     <AssemblyName>NCrontab.Advanced</AssemblyName>
-    <PackageId>NCrontab.Advanced</PackageId>
+    <PackageId>VisualOn.NCrontab.Advanced</PackageId>
     <Product>NCrontab.Advanced</Product>
     <Description>Cron string parser for .NET</Description>
     <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
