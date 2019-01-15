@@ -1,6 +1,6 @@
-﻿# NCrontab Advanced
+﻿# NCrontab Advanced [![Build status](https://ci.appveyor.com/api/projects/status/74py94r0mcwogo5f?svg=true)](https://ci.appveyor.com/project/ViceIce/ncrontab-advanced)
 
-[![Build status](https://ci.appveyor.com/api/projects/status/kf0q2cp6xx9qf84w?svg=true)](https://ci.appveyor.com/project/jcoutch/ncrontab-advanced)
+This is a fork from [Joe Coutcher](https://github.com/jcoutch/NCrontab-Advanced).
 
 **If you have any problems, make sure to file an issue here on Github.**
 
