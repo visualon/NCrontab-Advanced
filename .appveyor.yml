@@ -39,4 +39,4 @@ build:
 test:
   assemblies:
     only:
-      - 'NCrontab.Advanced.Tests\bin\**\UnitTests.dll'
+      - 'NCrontab.Advanced.Tests\bin\**\NCrontab.Advanced.Tests.dll'
