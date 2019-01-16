@@ -2,6 +2,17 @@
 
 This is a fork from [Joe Coutcher](https://github.com/jcoutch/NCrontab-Advanced).
 
+Cron string parser for .NET
+
+## Changes
+See [Changelog](CHANGELOG.md)
+
+## License
+[Apache License 2.0](LICENSE)
+
+
+### Howto
+
 **If you have any problems, make sure to file an issue here on Github.**
 
 We were looking to implement [NCrontab](https://github.com/atifaziz/NCrontab) for a project, but found it had a few shortcomings:
