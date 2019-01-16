@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+    <PropertyGroup>
+        <MinVerMinimumMajorMinor>2.0</MinVerMinimumMajorMinor>
+        <MinVerTagPrefix>v</MinVerTagPrefix>
+
+        <SignAssembly>true</SignAssembly>
+        <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+
+        <Authors>jcoutch; VisualOn</Authors>
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/VisualOn/NCrontab-Advanced</PackageProjectUrl>
+        <PackageIconUrl>https://raw.githubusercontent.com/VisualOn/NCrontab-Advanced/master/NCrontab.Advanced/Icons/x-office-calendar.png</PackageIconUrl>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MinVer" Version="1.0.0-beta.4" PrivateAssets="All" />
+    </ItemGroup>
+</Project>
