@@ -1,3 +1,8 @@
 {
-    "renovateFork": true
+  "includeForks": true,
+  "extends": ["config:base", ":assignAndReview(viceice)", ":automergePatch"],
+  "labels": ["deps"],
+  "prCreation": "not-pending",
+  "semanticCommits": true,
+  "timezone": "Europe/Berlin"
 }
