@@ -3,6 +3,7 @@
   "extends": ["config:base", ":assignAndReview(viceice)", ":automergePatch"],
   "labels": ["deps"],
   "nuget": {
+    "registryUrls": ["https://api.nuget.org/v3/index.json"],
     "fileMatch": ["\\.csproj$", "\\.props$", "\\.targets$"]
   },
   "prCreation": "not-pending",
