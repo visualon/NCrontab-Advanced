@@ -1,6 +1,6 @@
 {
   "includeForks": true,
-  "extends": ["config:base", ":assignAndReview(viceice)", ":automergePatch"],
+  "extends": ["config:base", ":assignAndReview(viceice)", ":automergePatch", ":masterIssue"],
   "labels": ["deps"],
   "nuget": {
     "registryUrls": ["https://api.nuget.org/v3/index.json"],
@@ -8,5 +8,11 @@
   },
   "prCreation": "not-pending",
   "semanticCommits": true,
-  "timezone": "Europe/Berlin"
+  "timezone": "Europe/Berlin",
+  "major": {
+    "masterIssueApproval": true
+  },
+  "minor": {
+    "masterIssueApproval": true
+  }
 }
