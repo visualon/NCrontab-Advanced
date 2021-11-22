@@ -2,8 +2,16 @@ name: build
 
 on:
   push:
+    branches:
+      - main
+      - 'renovate/**'
   pull_request:
 
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
+  cancel-in-progress: true
+  
 jobs:
   build:
 
