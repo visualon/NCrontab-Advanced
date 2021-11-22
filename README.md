@@ -1,4 +1,7 @@
-﻿# NCrontab Advanced [![Build status](https://ci.appveyor.com/api/projects/status/74py94r0mcwogo5f?svg=true)](https://ci.appveyor.com/project/ViceIce/ncrontab-advanced) [![](https://img.shields.io/myget/visualon/v/VisualOn.NCrontab.Advanced.svg?label=MyGet&style=flat)](https://www.myget.org/gallery/visualon)
+[![Build status](https://github.com/visualon/NCrontab-Advanced/actions/workflows/build.yml/badge.svg)](https://github.com/visualon/NCrontab-Advanced/actions/workflows/build.yml)
+[![](https://img.shields.io/myget/visualon/v/VisualOn.NCrontab.Advanced.svg?label=MyGet&style=flat)](https://www.myget.org/gallery/visualon)
+
+# NCrontab Advanced 
 
 This is a fork from [Joe Coutcher](https://github.com/jcoutch/NCrontab-Advanced).
 

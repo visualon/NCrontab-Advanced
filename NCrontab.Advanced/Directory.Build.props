@@ -9,11 +9,13 @@
 
         <Authors>jcoutch; VisualOn</Authors>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-        <PackageProjectUrl>https://github.com/VisualOn/NCrontab-Advanced</PackageProjectUrl>
-        <PackageIconUrl>https://raw.githubusercontent.com/VisualOn/NCrontab-Advanced/master/NCrontab.Advanced/Icons/x-office-calendar.png</PackageIconUrl>
+        <PackageProjectUrl>https://github.com/visualon/NCrontab-Advanced</PackageProjectUrl>
+        <PackageIconUrl>https://raw.githubusercontent.com/visualon/NCrontab-Advanced/main/NCrontab.Advanced/Icons/x-office-calendar.png</PackageIconUrl>
+        <PackageIcon>icon.png</PackageIcon>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="MinVer" Version="2.3.1" PrivateAssets="All" />
+        <None Include="Icons/x-office-calendar.png" Pack="true" PackagePath="/icon.png"/>
     </ItemGroup>
 </Project>
