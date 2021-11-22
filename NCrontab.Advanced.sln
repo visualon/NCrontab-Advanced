@@ -1,11 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCrontab.Advanced", "NCrontab.Advanced\NCrontab.Advanced.csproj", "{D56BC51A-E8F9-4911-8C4C-EAB2763699CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NCrontab.Advanced", "NCrontab.Advanced\NCrontab.Advanced.csproj", "{D56BC51A-E8F9-4911-8C4C-EAB2763699CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCrontab.Advanced.Tests", "NCrontab.Advanced.Tests\NCrontab.Advanced.Tests.csproj", "{CCAD3304-0882-4244-8F66-1890126AC5C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NCrontab.Advanced.Tests", "NCrontab.Advanced.Tests\NCrontab.Advanced.Tests.csproj", "{CCAD3304-0882-4244-8F66-1890126AC5C6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "files", "files", "{A4AC8C8C-BB8C-4904-95CE-F15183D24EF6}"
+	ProjectSection(SolutionItems) = preProject
+		CHANGELOG.md = CHANGELOG.md
+		COPYING.txt = COPYING.txt
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +32,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DB8503DB-B7F2-4771-B766-4453A59C29CB}
 	EndGlobalSection
 EndGlobal
