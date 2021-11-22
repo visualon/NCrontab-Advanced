@@ -1,15 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "includeForks": true,
-  "extends": ["config:base", ":assignAndReview(viceice)", ":automergePatch", ":dependencyDashboard"],
-  "labels": ["deps"],
-  "prCreation": "not-pending",
-  "semanticCommits": "enabled",
-  "timezone": "Europe/Berlin",
-  "major": {
-    "dependencyDashboardApproval": true
-  },
-  "minor": {
-    "dependencyDashboardApproval": true
-  }
+  "extends": ["visualon/renovate-config", "visualon/renovate-config:automergePatch"],
+  "labels": ["deps"]
 }
