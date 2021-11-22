@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Build on GitHub actions
+- Drop deprecated frameworks
+
 ## [2.0.0] - 2019-01-16
 ### Added
 - Changes from [Joe Coutcher](https://github.com/jcoutch/NCrontab-Advanced) v1.3.15.
