@@ -277,6 +277,7 @@ namespace NCrontab.Advanced.Tests
                 new { startTime = "20/12/2003 10:00:00", inputString = " * 3/4 * * *", nextOccurence = "20/12/2003 11:00:00", cronStringFormat = CronStringFormat.Default },
                 new { startTime = "20/12/2003 00:30:00", inputString = " * 3   * * *", nextOccurence = "20/12/2003 03:00:00", cronStringFormat = CronStringFormat.Default },
                 new { startTime = "20/12/2003 01:45:00", inputString = "30 3   * * *", nextOccurence = "20/12/2003 03:30:00", cronStringFormat = CronStringFormat.Default },
+                new { startTime = "20/12/2003 22:55:00", inputString = "*/15 9-23 * * *", nextOccurence = "20/12/2003 23:00:00", cronStringFormat = CronStringFormat.Default },
 
                 // Day of month tests
 
@@ -640,6 +641,123 @@ namespace NCrontab.Advanced.Tests
 
             Assert.AreEqual(DateTime.MaxValue, result, "Next date returned is end date");
             Assert.IsFalse(stopWatch.ElapsedMilliseconds > 250, string.Format("Elapsed time should not exceed 250ms (was {0} ms)", stopWatch.ElapsedMilliseconds));
+        }
+
+        [TestMethod]
+        public void EveryHour()
+        {
+            var cron = CrontabSchedule.Parse("0 * * * *");
+            var start = DateTime.Today.ToUniversalTime();
+            var currentTime = start;
+            foreach (var nextOccurrence in cron.GetNextOccurrences(start,start.AddDays(2)))
+            {
+                currentTime = currentTime.AddHours(1);
+                Assert.AreEqual(currentTime, nextOccurrence);
+            }
+        }
+        
+        [TestMethod]
+        public void EveryMinute()
+        {
+            var cron = CrontabSchedule.Parse("* * * * *");
+            var start = DateTime.Today.ToUniversalTime();
+            var currentTime = start;
+            foreach (var nextOccurrence in cron.GetNextOccurrences(start, start.AddHours(2)))
+            {
+                currentTime = currentTime.AddMinutes(1);
+                Assert.AreEqual(currentTime, nextOccurrence);
+            }
+        }
+
+        [TestMethod]
+        public void EverySecond()
+        {
+            var cron = CrontabSchedule.Parse("* * * * * *", CronStringFormat.WithSeconds);
+            var start = DateTime.Today.ToUniversalTime();
+            var currentTime = start;
+            foreach (var nextOccurrence in cron.GetNextOccurrences(start, start.AddMinutes(2)))
+            {
+                currentTime = currentTime.AddSeconds(1);
+                Assert.AreEqual(currentTime, nextOccurrence);
+            }
+        }
+
+        [TestMethod]
+        public void EveryHour_Step()
+        {
+            var cron = CrontabSchedule.Parse("0 0/1 * * *");
+            var start = DateTime.Today.ToUniversalTime();
+            var currentTime = start;
+            foreach (var nextOccurrence in cron.GetNextOccurrences(start, start.AddDays(2)))
+            {
+                currentTime = currentTime.AddHours(1);
+                Assert.AreEqual(currentTime, nextOccurrence);
+            }
+        }
+
+        [TestMethod]
+        public void EveryMinute_Step()
+        {
+            var cron = CrontabSchedule.Parse("0/1 * * * *");
+            var start = DateTime.Today.ToUniversalTime();
+            var currentTime = start;
+            foreach (var nextOccurrence in cron.GetNextOccurrences(start, start.AddHours(2)))
+            {
+                currentTime = currentTime.AddMinutes(1);
+                Assert.AreEqual(currentTime, nextOccurrence);
+            }
+        }
+
+        [TestMethod]
+        public void EverySecond_Step()
+        {
+            var cron = CrontabSchedule.Parse("0/1 * * * * *", CronStringFormat.WithSeconds);
+            var start = DateTime.Today.ToUniversalTime();
+            var currentTime = start;
+            foreach (var nextOccurrence in cron.GetNextOccurrences(start, start.AddMinutes(2)))
+            {
+                currentTime = currentTime.AddSeconds(1);
+                Assert.AreEqual(currentTime, nextOccurrence);
+            }
+        }
+
+        [TestMethod]
+        public void EveryHour_Range()
+        {
+            var cron = CrontabSchedule.Parse("0 0-23 * * *");
+            var start = DateTime.Today.ToUniversalTime();
+            var currentTime = start;
+            foreach (var nextOccurrence in cron.GetNextOccurrences(start, start.AddDays(2)))
+            {
+                currentTime = currentTime.AddHours(1);
+                Assert.AreEqual(currentTime, nextOccurrence);
+            }
+        }
+
+        [TestMethod]
+        public void EveryMinute_Range()
+        {
+            var cron = CrontabSchedule.Parse("0-59 * * * *");
+            var start = DateTime.Today.ToUniversalTime();
+            var currentTime = start;
+            foreach (var nextOccurrence in cron.GetNextOccurrences(start, start.AddHours(2)))
+            {
+                currentTime = currentTime.AddMinutes(1);
+                Assert.AreEqual(currentTime, nextOccurrence);
+            }
+        }
+
+        [TestMethod]
+        public void EverySecond_Range()
+        {
+            var cron = CrontabSchedule.Parse("0-59 * * * * *", CronStringFormat.WithSeconds);
+            var start = DateTime.Today.ToUniversalTime();
+            var currentTime = start;
+            foreach (var nextOccurrence in cron.GetNextOccurrences(start, start.AddMinutes(2)))
+            {
+                currentTime = currentTime.AddSeconds(1);
+                Assert.AreEqual(currentTime, nextOccurrence);
+            }
         }
 
         static void CronCall(string startTimeString, string cronExpression, string nextTimeString, CronStringFormat format)
