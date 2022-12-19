@@ -8,13 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Code coverage
+- Upstream changes (2020-09-16)
 
 ### Changed
 - Build on GitHub actions
 - Drop deprecated frameworks
 - Add pull bot
-- migrate to vs 2022
-
+- Migrate to vs 2022
+- Cleanup
 
 ## [2.0.0] - 2019-01-16
 ### Added
