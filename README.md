@@ -1,5 +1,6 @@
 [![Build status](https://github.com/visualon/NCrontab-Advanced/actions/workflows/build.yml/badge.svg)](https://github.com/visualon/NCrontab-Advanced/actions/workflows/build.yml)
 [![](https://img.shields.io/myget/visualon/v/VisualOn.NCrontab.Advanced.svg?label=MyGet&style=flat)](https://www.myget.org/gallery/visualon)
+[![codecov](https://codecov.io/github/visualon/NCrontab-Advanced/branch/main/graph/badge.svg?token=HA21uSD3qB)](https://codecov.io/github/visualon/NCrontab-Advanced)
 
 # NCrontab Advanced 
 
