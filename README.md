@@ -1,41 +1,45 @@
 [![Build status](https://github.com/visualon/NCrontab-Advanced/actions/workflows/build.yml/badge.svg)](https://github.com/visualon/NCrontab-Advanced/actions/workflows/build.yml)
-[![](https://img.shields.io/myget/visualon/v/VisualOn.NCrontab.Advanced.svg?label=MyGet&style=flat)](https://www.myget.org/gallery/visualon)
+[![Nuget](https://img.shields.io/nuget/v/VisualOn.NCrontab.Advanced)](https://www.nuget.org/packages/VisualOn.NCrontab.Advanced)
 [![codecov](https://codecov.io/github/visualon/NCrontab-Advanced/branch/main/graph/badge.svg?token=HA21uSD3qB)](https://codecov.io/github/visualon/NCrontab-Advanced)
+![LICENSE](https://img.shields.io/github/license/visualon/NCrontab-Advanced)
 
-# NCrontab Advanced 
+# NCrontab Advanced
 
 This is a fork from [Joe Coutcher](https://github.com/jcoutch/NCrontab-Advanced).
 
 Cron string parser for .NET
 
 ## Changes
-See [Changelog](CHANGELOG.md)
+
+See GitHub [Releases](https://github.com/visualon/NCrontab-Advanced/releases)
 
 ## License
+
 [Apache License 2.0](LICENSE)
 
-
-### Howto
+## Howto
 
 **If you have any problems, make sure to file an issue here on Github.**
 
 We were looking to implement [NCrontab](https://github.com/atifaziz/NCrontab) for a project, but found it had a few shortcomings:
-* No support for #, L and W
-* Only supported two cron formats:  "SECONDS MINUTES HOURS DAYS MONTHS DAYS-OF-WEEK" and one without SECONDS.
 
-So, I started looking into adding these features.  After some digging through the code, it became apparent that while the code worked well for the cron strings that it supported, it wouldn't scale well for support of #, L and W. :-(
+- No support for #, L and W
+- Only supported two cron formats: "SECONDS MINUTES HOURS DAYS MONTHS DAYS-OF-WEEK" and one without SECONDS.
 
-In comes NCrontab-Advanced - a complete re-write of the parsing engine.  Along with the re-write come the following features:
+So, I started looking into adding these features. After some digging through the code, it became apparent that while the code worked well for the cron strings that it supported, it wouldn't scale well for support of #, L and W. :-(
+
+In comes NCrontab-Advanced - a complete re-write of the parsing engine. Along with the re-write come the following features:
 
 **Support for the following cron formats:**
-* `CronStringFormat.Default`: MINUTES HOURS DAYS MONTHS DAYS-OF-WEEK
-* `CronStringFormat.WithYears`: MINUTES HOURS DAYS MONTHS DAYS-OF-WEEK YEARS
-* `CronStringFormat.WithSeconds`: SECONDS MINUTES HOURS DAYS MONTHS DAYS-OF-WEEK
-* `CronStringFormat.WithSecondsAndYears`: SECONDS MINUTES HOURS DAYS MONTHS DAYS-OF-WEEK YEARS
+
+- `CronStringFormat.Default`: MINUTES HOURS DAYS MONTHS DAYS-OF-WEEK
+- `CronStringFormat.WithYears`: MINUTES HOURS DAYS MONTHS DAYS-OF-WEEK YEARS
+- `CronStringFormat.WithSeconds`: SECONDS MINUTES HOURS DAYS MONTHS DAYS-OF-WEEK
+- `CronStringFormat.WithSecondsAndYears`: SECONDS MINUTES HOURS DAYS MONTHS DAYS-OF-WEEK YEARS
 
 **How to build project:**
 
-The project can be opened using Visual Studio 2015, or Visual Studio Code.  You can either build using MSBuild against the solution, or using .NET Core's `dotnet` command:
+The project can be opened using Visual Studio 2015, or Visual Studio Code. You can either build using MSBuild against the solution, or using .NET Core's `dotnet` command:
 
 ```
 # Run this from the NCrontab.Advanced folder (which contains NCrontab.Advanced.csproj)
