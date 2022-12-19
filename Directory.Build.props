@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+    <PropertyGroup>
+        <MinVerTagPrefix>v</MinVerTagPrefix>
+        <MinVerMinimumMajorMinor>2.0</MinVerMinimumMajorMinor>
+
+        <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+
+        <LangVersion>latest</LangVersion>
+
+        <FineCodeCoverage>
+          <Enabled>true</Enabled>
+          <RunMsCodeCoverage>true</RunMsCodeCoverage>
+          <!-- and more -->
+        </FineCodeCoverage>
+        <RunSettingsFilePath>$(MSBuildThisFileDirectory)/Test.runsettings</RunSettingsFilePath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MinVer" Version="2.5.0" PrivateAssets="All" />
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+    </ItemGroup>
+
+</Project>
