@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <Company>Joe Coutcher</Company>
-    <TargetFrameworks>net472;net6.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>net472;net8.0</TargetFrameworks>
     <Product>NCrontab.Advanced</Product>
     <Description>Cron string parser for .NET</Description>
 
