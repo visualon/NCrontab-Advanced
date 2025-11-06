@@ -65,5 +65,4 @@ jobs:
         uses: codecov/test-results-action@47f89e9acb64b76debcd5ea40642d25a4adced9f # v1.1.1
         with:
           use_oidc: true
-          files: '**/TestResults/*/*.junit.xml'
           fail_ci_if_error: true
