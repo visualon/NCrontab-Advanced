@@ -9,7 +9,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NCrontab.Advanced.Enumerations;
 using NCrontab.Advanced.Exceptions;
-using NCrontab.Advanced.Tests.Extensions;
 using System;
 using System.Diagnostics;
 using System.Globalization;
@@ -26,13 +25,13 @@ namespace NCrontab.Advanced.Tests
         [TestMethod]
         public void CannotParseNullString()
         {
-            Assert2.Throws<CrontabException>(() => CrontabSchedule.Parse(null));
+            Assert.Throws<CrontabException>(() => CrontabSchedule.Parse(null));
         }
 
         [TestMethod]
         public void CannotParseEmptyString()
         {
-            Assert2.Throws<CrontabException>(() => CrontabSchedule.Parse(string.Empty));
+            Assert.Throws<CrontabException>(() => CrontabSchedule.Parse(string.Empty));
         }
 
         [TestMethod]
@@ -52,42 +51,42 @@ namespace NCrontab.Advanced.Tests
         [TestMethod]
         public void InvalidPatternCount()
         {
-            Assert2.Throws<CrontabException>(() => CrontabSchedule.Parse("* * * *", CronStringFormat.Default));
-            Assert2.Throws<CrontabException>(() => CrontabSchedule.Parse("* * * * * *", CronStringFormat.Default));
+            Assert.Throws<CrontabException>(() => CrontabSchedule.Parse("* * * *", CronStringFormat.Default));
+            Assert.Throws<CrontabException>(() => CrontabSchedule.Parse("* * * * * *", CronStringFormat.Default));
 
-            Assert2.Throws<CrontabException>(() => CrontabSchedule.Parse("* * * * *", CronStringFormat.WithSeconds));
-            Assert2.Throws<CrontabException>(() => CrontabSchedule.Parse("* * * * * * *", CronStringFormat.WithSeconds));
+            Assert.Throws<CrontabException>(() => CrontabSchedule.Parse("* * * * *", CronStringFormat.WithSeconds));
+            Assert.Throws<CrontabException>(() => CrontabSchedule.Parse("* * * * * * *", CronStringFormat.WithSeconds));
 
-            Assert2.Throws<CrontabException>(() => CrontabSchedule.Parse("* * * * *", CronStringFormat.WithYears));
-            Assert2.Throws<CrontabException>(() => CrontabSchedule.Parse("* * * * * * *", CronStringFormat.WithYears));
+            Assert.Throws<CrontabException>(() => CrontabSchedule.Parse("* * * * *", CronStringFormat.WithYears));
+            Assert.Throws<CrontabException>(() => CrontabSchedule.Parse("* * * * * * *", CronStringFormat.WithYears));
 
-            Assert2.Throws<CrontabException>(() => CrontabSchedule.Parse("* * * * * *", CronStringFormat.WithSecondsAndYears));
-            Assert2.Throws<CrontabException>(() => CrontabSchedule.Parse("* * * * * * * *", CronStringFormat.WithSecondsAndYears));
+            Assert.Throws<CrontabException>(() => CrontabSchedule.Parse("* * * * * *", CronStringFormat.WithSecondsAndYears));
+            Assert.Throws<CrontabException>(() => CrontabSchedule.Parse("* * * * * * * *", CronStringFormat.WithSecondsAndYears));
         }
 
         [TestMethod]
         public void OutOfBoundsValues()
         {
-            Assert2.Throws<CrontabException>(() => CrontabSchedule.Parse("-1 * * * * *", CronStringFormat.WithSeconds));
-            Assert2.Throws<CrontabException>(() => CrontabSchedule.Parse("60 * * * * *", CronStringFormat.WithSeconds));
+            Assert.Throws<CrontabException>(() => CrontabSchedule.Parse("-1 * * * * *", CronStringFormat.WithSeconds));
+            Assert.Throws<CrontabException>(() => CrontabSchedule.Parse("60 * * * * *", CronStringFormat.WithSeconds));
 
-            Assert2.Throws<CrontabException>(() => CrontabSchedule.Parse("* * * * * 0", CronStringFormat.WithYears));
-            Assert2.Throws<CrontabException>(() => CrontabSchedule.Parse("* * * * * 10000", CronStringFormat.WithYears));
+            Assert.Throws<CrontabException>(() => CrontabSchedule.Parse("* * * * * 0", CronStringFormat.WithYears));
+            Assert.Throws<CrontabException>(() => CrontabSchedule.Parse("* * * * * 10000", CronStringFormat.WithYears));
 
-            Assert2.Throws<CrontabException>(() => CrontabSchedule.Parse("-1 * * * *", CronStringFormat.Default));
-            Assert2.Throws<CrontabException>(() => CrontabSchedule.Parse("60 * * * *", CronStringFormat.Default));
+            Assert.Throws<CrontabException>(() => CrontabSchedule.Parse("-1 * * * *", CronStringFormat.Default));
+            Assert.Throws<CrontabException>(() => CrontabSchedule.Parse("60 * * * *", CronStringFormat.Default));
 
-            Assert2.Throws<CrontabException>(() => CrontabSchedule.Parse("* -1 * * *", CronStringFormat.Default));
-            Assert2.Throws<CrontabException>(() => CrontabSchedule.Parse("* 24 * * *", CronStringFormat.Default));
+            Assert.Throws<CrontabException>(() => CrontabSchedule.Parse("* -1 * * *", CronStringFormat.Default));
+            Assert.Throws<CrontabException>(() => CrontabSchedule.Parse("* 24 * * *", CronStringFormat.Default));
 
-            Assert2.Throws<CrontabException>(() => CrontabSchedule.Parse("* * 0 * *", CronStringFormat.Default));
-            Assert2.Throws<CrontabException>(() => CrontabSchedule.Parse("* * 32 * *", CronStringFormat.Default));
+            Assert.Throws<CrontabException>(() => CrontabSchedule.Parse("* * 0 * *", CronStringFormat.Default));
+            Assert.Throws<CrontabException>(() => CrontabSchedule.Parse("* * 32 * *", CronStringFormat.Default));
 
-            Assert2.Throws<CrontabException>(() => CrontabSchedule.Parse("* * * 0 *", CronStringFormat.Default));
-            Assert2.Throws<CrontabException>(() => CrontabSchedule.Parse("* * * 13 *", CronStringFormat.Default));
+            Assert.Throws<CrontabException>(() => CrontabSchedule.Parse("* * * 0 *", CronStringFormat.Default));
+            Assert.Throws<CrontabException>(() => CrontabSchedule.Parse("* * * 13 *", CronStringFormat.Default));
 
-            Assert2.Throws<CrontabException>(() => CrontabSchedule.Parse("* * * * -1", CronStringFormat.Default));
-            Assert2.Throws<CrontabException>(() => CrontabSchedule.Parse("* * * * 8", CronStringFormat.Default));
+            Assert.Throws<CrontabException>(() => CrontabSchedule.Parse("* * * * -1", CronStringFormat.Default));
+            Assert.Throws<CrontabException>(() => CrontabSchedule.Parse("* * * * 8", CronStringFormat.Default));
         }
 
         [TestMethod]
@@ -123,7 +122,7 @@ namespace NCrontab.Advanced.Tests
         [TestMethod]
         public void CannotParseWhenSecondsRequired()
         {
-            Assert2.Throws<CrontabException>(() => CrontabSchedule.Parse("* * * * *", CronStringFormat.WithSeconds));
+            Assert.Throws<CrontabException>(() => CrontabSchedule.Parse("* * * * *", CronStringFormat.WithSeconds));
         }
 
         [TestMethod]
@@ -505,7 +504,7 @@ namespace NCrontab.Advanced.Tests
 
         static void BadField(string expression, CronStringFormat format)
         {
-            Assert2.Throws<CrontabException>(() => CrontabSchedule.Parse(expression, format));
+            Assert.Throws<CrontabException>(() => CrontabSchedule.Parse(expression, format));
         }
 
         [TestMethod]
@@ -615,7 +614,7 @@ namespace NCrontab.Advanced.Tests
 
             var parser = CrontabSchedule.Parse(cronString, CronStringFormat.WithYears);
             var instances = parser.GetNextOccurrences(input, DateTime.MaxValue).ToList();
-            Assert.AreEqual(10, instances.Count, "Make sure only 10 instances were generated");
+            Assert.HasCount(10, instances, "Make sure only 10 instances were generated");
 
             // Now we'll manually iterate through getting values, and check the 11th and 12th
             // instance to make sure nothing blows up.
@@ -624,7 +623,7 @@ namespace NCrontab.Advanced.Tests
                 newInput = parser.GetNextOccurrence(newInput);
 
             Assert.IsTrue((newInput = parser.GetNextOccurrence(newInput)) == DateTime.MaxValue, "Make sure 11th instance is the endDate");
-            Assert.IsTrue((newInput = parser.GetNextOccurrence(newInput)) == DateTime.MaxValue, "Make sure 12th instance is the endDate");
+            Assert.IsTrue(parser.GetNextOccurrence(newInput) == DateTime.MaxValue, "Make sure 12th instance is the endDate");
         }
 
         [TestMethod]
@@ -632,7 +631,7 @@ namespace NCrontab.Advanced.Tests
         {
             var stopWatch = new Stopwatch();
 
-            var cron = NCrontab.Advanced.CrontabSchedule.Parse("0 0 1 1 * 0001", NCrontab.Advanced.Enumerations.CronStringFormat.WithYears);
+            var cron = CrontabSchedule.Parse("0 0 1 1 * 0001", CronStringFormat.WithYears);
             var date = DateTime.Parse("0001-01-01");
 
             stopWatch.Start();
@@ -640,7 +639,7 @@ namespace NCrontab.Advanced.Tests
             stopWatch.Stop();
 
             Assert.AreEqual(DateTime.MaxValue, result, "Next date returned is end date");
-            Assert.IsFalse(stopWatch.ElapsedMilliseconds > 250, string.Format("Elapsed time should not exceed 250ms (was {0} ms)", stopWatch.ElapsedMilliseconds));
+            Assert.IsLessThanOrEqualTo(250, stopWatch.ElapsedMilliseconds, $"Elapsed time should not exceed 250ms (was {stopWatch.ElapsedMilliseconds} ms)");
         }
 
         [TestMethod]
@@ -765,8 +764,7 @@ namespace NCrontab.Advanced.Tests
             var schedule = CrontabSchedule.Parse(cronExpression, format);
             var next = schedule.GetNextOccurrence(Time(startTimeString));
 
-            var message = string.Format("Occurrence of <{0}> after <{1}>, format <{2}>.", cronExpression, startTimeString, Enum.GetName(typeof(CronStringFormat), format));
-            Assert.AreEqual(nextTimeString, TimeString(next), message);
+            Assert.AreEqual(nextTimeString, TimeString(next), $"Occurrence of <{cronExpression}> after <{startTimeString}>, format <{Enum.GetName(typeof(CronStringFormat), format)}>.");
         }
 
         static void CronFinite(string cronExpression, string startTimeString, string endTimeString, CronStringFormat format)
@@ -775,8 +773,7 @@ namespace NCrontab.Advanced.Tests
             var occurrence = schedule.GetNextOccurrence(Time(startTimeString), Time(endTimeString));
 
             Assert.AreEqual(endTimeString, TimeString(occurrence),
-                "Occurrence of <{0}> after <{1}> did not terminate with <{2}>.",
-                cronExpression, startTimeString, endTimeString);
+                $"Occurrence of <{cronExpression}> after <{startTimeString}> did not terminate with <{endTimeString}>.");
         }
 
         static string TimeString(DateTime time) => time.ToString(TimeFormat, CultureInfo.InvariantCulture);

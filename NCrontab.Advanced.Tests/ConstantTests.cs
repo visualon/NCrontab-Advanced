@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NCrontab.Advanced.Enumerations;
 
 namespace NCrontab.Advanced.Tests
 {
@@ -16,17 +12,17 @@ namespace NCrontab.Advanced.Tests
         [TestMethod]
         public void VerifyConstants()
         {
-            ValidateExists<CronStringFormat>(Constants.ExpectedFieldCounts);
-            ValidateExists<CrontabFieldKind>(Constants.MaximumDateTimeValues);
-            ValidateExists<DayOfWeek>(Constants.CronDays);
+            ValidateExists(Constants.ExpectedFieldCounts);
+            ValidateExists(Constants.MaximumDateTimeValues);
+            ValidateExists(Constants.CronDays);
         }
 
-        private static void ValidateExists<T>(IDictionary dictionary)
+        private static void ValidateExists<T>(IDictionary<T, int> dictionary) where T : struct, Enum
         {
             Assert.IsNotNull(dictionary);
 
-            foreach (var value in Enum.GetValues(typeof (T)))
-                Assert.IsTrue(dictionary.Contains(value), "Contains <{0}>", Enum.GetName(typeof(T), value));
+            foreach (T value in Enum.GetValues(typeof(T)))
+                Assert.IsTrue(dictionary.ContainsKey(value), $"Contains <{Enum.GetName(typeof(T), value)}>");
         }
     }
 }

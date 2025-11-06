@@ -5,7 +5,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NCrontab.Advanced.Enumerations;
 using NCrontab.Advanced.Exceptions;
 using NCrontab.Advanced.Filters;
-using NCrontab.Advanced.Tests.Extensions;
 
 namespace NCrontab.Advanced.Tests
 {
@@ -44,7 +43,7 @@ namespace NCrontab.Advanced.Tests
             var values = Enum.GetValues(typeof(CrontabFieldKind)).Cast<CrontabFieldKind>().Where(x => x != CrontabFieldKind.Day);
 
             foreach (var type in values)
-                Assert2.Throws<CrontabException>(() => new LastDayOfMonthFilter(type), "Ensure LastDayOfMonthFilter can't be instantiated with <{0}>", Enum.GetName(typeof(CrontabFieldKind), type));
+                Assert.Throws<CrontabException>(() => new LastDayOfMonthFilter(type), $"Ensure LastDayOfMonthFilter can't be instantiated with <{Enum.GetName(typeof(CrontabFieldKind), type)}>");
         }
 
         #endregion
@@ -68,7 +67,7 @@ namespace NCrontab.Advanced.Tests
             foreach (var test in tests)
             {
                 var method = new LastDayOfWeekInMonthFilter(Constants.CronDays[test.day], CrontabFieldKind.DayOfWeek);
-                Assert.IsTrue(method.IsMatch(test.output), "Is {0} the last instance of that day in the month");
+                Assert.IsTrue(method.IsMatch(test.output), $"Is {test.output} the last instance of that day in the month");
             }
         }
 
@@ -78,7 +77,7 @@ namespace NCrontab.Advanced.Tests
             var values = Enum.GetValues(typeof(CrontabFieldKind)).Cast<CrontabFieldKind>().Where(x => x != CrontabFieldKind.DayOfWeek);
 
             foreach (var type in values)
-                Assert2.Throws<CrontabException>(() => new LastDayOfWeekInMonthFilter(0, type), "Ensure LastDayOfWeekInMonthFilter can't be instantiated with <{0}>", Enum.GetName(typeof(CrontabFieldKind), type));
+                Assert.Throws<CrontabException>(() => new LastDayOfWeekInMonthFilter(0, type), $"Ensure LastDayOfWeekInMonthFilter can't be instantiated with <{Enum.GetName(typeof(CrontabFieldKind), type)}>");
         }
 
         #endregion
@@ -107,7 +106,7 @@ namespace NCrontab.Advanced.Tests
 
             var method = new LastWeekdayOfMonthFilter(CrontabFieldKind.Day);
             foreach (var test in tests)
-                Assert.IsTrue(method.IsMatch(test.output), "Is {0} the last week day in a month");
+                Assert.IsTrue(method.IsMatch(test.output), $"Is {test.output} the last week day in a month");
         }
 
         [TestMethod]
@@ -116,7 +115,7 @@ namespace NCrontab.Advanced.Tests
             var values = Enum.GetValues(typeof(CrontabFieldKind)).Cast<CrontabFieldKind>().Where(x => x != CrontabFieldKind.Day);
 
             foreach (var type in values)
-                Assert2.Throws<CrontabException>(() => new LastWeekdayOfMonthFilter(type), "Ensure LastWeekdayOfMonth can't be instantiated with <{0}>", Enum.GetName(typeof(CrontabFieldKind), type));
+                Assert.Throws<CrontabException>(() => new LastWeekdayOfMonthFilter(type), $"Ensure LastWeekdayOfMonth can't be instantiated with <{Enum.GetName(typeof(CrontabFieldKind), type)}>");
         }
 
         #endregion
@@ -143,7 +142,7 @@ namespace NCrontab.Advanced.Tests
             foreach (var test in tests)
             {
                 var method = new NearestWeekdayFilter(test.day, CrontabFieldKind.Day);
-                Assert.IsTrue(method.IsMatch(test.output), "Is {0} the nearest weekday for day = {1}", test.output, test.day);
+                Assert.IsTrue(method.IsMatch(test.output), $"Is {test.output} the nearest weekday for day = {test.day}");
             }
         }
 
@@ -153,10 +152,10 @@ namespace NCrontab.Advanced.Tests
             var values = Enum.GetValues(typeof(CrontabFieldKind)).Cast<CrontabFieldKind>().Where(x => x != CrontabFieldKind.Day);
 
             foreach (var type in values)
-                Assert2.Throws<CrontabException>(() => new NearestWeekdayFilter(1, type), "Ensure NearestWeekdayFilter can't be instantiated with <{0}>", Enum.GetName(typeof(CrontabFieldKind), type));
+                Assert.Throws<CrontabException>(() => new NearestWeekdayFilter(1, type), $"Ensure NearestWeekdayFilter can't be instantiated with <{Enum.GetName(typeof(CrontabFieldKind), type)}>");
 
-            Assert2.Throws<CrontabException>(() => new NearestWeekdayFilter(-1, CrontabFieldKind.Day));
-            Assert2.Throws<CrontabException>(() => new NearestWeekdayFilter(32, CrontabFieldKind.Day));
+            Assert.Throws<CrontabException>(() => new NearestWeekdayFilter(-1, CrontabFieldKind.Day));
+            Assert.Throws<CrontabException>(() => new NearestWeekdayFilter(32, CrontabFieldKind.Day));
         }
 
         #endregion
@@ -186,21 +185,21 @@ namespace NCrontab.Advanced.Tests
             foreach (var test in tests)
             {
                 var method = new RangeFilter(test.start, test.end, test.steps, CrontabFieldKind.Day);
-                Assert.AreEqual(test.result, method.IsMatch(test.input), "Is {0} in the range of {1}-{2}/{3}?", test.input, test.start, test.end, test.steps ?? 1);
+                Assert.AreEqual(test.result, method.IsMatch(test.input), $"Is {test.input} in the range of {test.start}-{test.end}/{test.steps ?? 1}?");
             }
         }
 
         [TestMethod]
         public void RangeFilterInvalidState()
         {
-            Assert2.Throws<CrontabException>(() => new RangeFilter(-1, 1, null, CrontabFieldKind.Day));
-            Assert2.Throws<CrontabException>(() => new RangeFilter(1, -1, null, CrontabFieldKind.Day));
-            Assert2.Throws<CrontabException>(() => new RangeFilter(1, 1, -1, CrontabFieldKind.Day));
-            Assert2.Throws<CrontabException>(() => new RangeFilter(1, 1, 0, CrontabFieldKind.Day));
+            Assert.Throws<CrontabException>(() => new RangeFilter(-1, 1, null, CrontabFieldKind.Day));
+            Assert.Throws<CrontabException>(() => new RangeFilter(1, -1, null, CrontabFieldKind.Day));
+            Assert.Throws<CrontabException>(() => new RangeFilter(1, 1, -1, CrontabFieldKind.Day));
+            Assert.Throws<CrontabException>(() => new RangeFilter(1, 1, 0, CrontabFieldKind.Day));
 
-            Assert2.Throws<CrontabException>(() => new RangeFilter(32, 1, null, CrontabFieldKind.Day));
-            Assert2.Throws<CrontabException>(() => new RangeFilter(1, 32, null, CrontabFieldKind.Day));
-            Assert2.Throws<CrontabException>(() => new RangeFilter(1, 1, 32, CrontabFieldKind.Day));
+            Assert.Throws<CrontabException>(() => new RangeFilter(32, 1, null, CrontabFieldKind.Day));
+            Assert.Throws<CrontabException>(() => new RangeFilter(1, 32, null, CrontabFieldKind.Day));
+            Assert.Throws<CrontabException>(() => new RangeFilter(1, 1, 32, CrontabFieldKind.Day));
         }
 
         #endregion
@@ -231,7 +230,7 @@ namespace NCrontab.Advanced.Tests
             foreach (var test in tests)
             {
                 var method = new SpecificDayOfWeekInMonthFilter(Constants.CronDays[test.day], test.week, CrontabFieldKind.DayOfWeek);
-                Assert.IsTrue(method.IsMatch(test.output), "Is {0} instance number {1} of {2}?", test.output, test.week, Enum.GetName(typeof(DayOfWeek), test.day));
+                Assert.IsTrue(method.IsMatch(test.output), $"Is {test.output} instance number {test.week} of {Enum.GetName(typeof(DayOfWeek), test.day)}?");
             }
         }
 
@@ -241,11 +240,11 @@ namespace NCrontab.Advanced.Tests
             var values = Enum.GetValues(typeof(CrontabFieldKind)).Cast<CrontabFieldKind>().Where(x => x != CrontabFieldKind.DayOfWeek);
 
             foreach (var type in values)
-                Assert2.Throws<CrontabException>(() => new SpecificDayOfWeekInMonthFilter(0, 1, type), "Ensure SpecificDayOfWeekInMonthFilter can't be instantiated with <{0}>", Enum.GetName(typeof(CrontabFieldKind), type));
+                Assert.Throws<CrontabException>(() => new SpecificDayOfWeekInMonthFilter(0, 1, type), $"Ensure SpecificDayOfWeekInMonthFilter can't be instantiated with <{Enum.GetName(typeof(CrontabFieldKind), type)}>");
 
-            Assert2.Throws<CrontabException>(() => new SpecificDayOfWeekInMonthFilter(0, -1, CrontabFieldKind.DayOfWeek), "Make sure instance of -1 throws exception");
-            Assert2.Throws<CrontabException>(() => new SpecificDayOfWeekInMonthFilter(0, 0, CrontabFieldKind.DayOfWeek), "Make sure instance of 0 throws exception");
-            Assert2.Throws<CrontabException>(() => new SpecificDayOfWeekInMonthFilter(0, 6, CrontabFieldKind.DayOfWeek), "Makes sure instance of 6 throws exception");
+            Assert.Throws<CrontabException>(() => new SpecificDayOfWeekInMonthFilter(0, -1, CrontabFieldKind.DayOfWeek), "Make sure instance of -1 throws exception");
+            Assert.Throws<CrontabException>(() => new SpecificDayOfWeekInMonthFilter(0, 0, CrontabFieldKind.DayOfWeek), "Make sure instance of 0 throws exception");
+            Assert.Throws<CrontabException>(() => new SpecificDayOfWeekInMonthFilter(0, 6, CrontabFieldKind.DayOfWeek), "Makes sure instance of 6 throws exception");
         }
 
         #endregion
@@ -265,7 +264,7 @@ namespace NCrontab.Advanced.Tests
             foreach (var test in tests)
             {
                 var method = new SpecificFilter(test.specific, test.kind);
-                Assert.AreEqual(test.isMatch, method.IsMatch(test.output), "Is {0} a match to specific {1} of {2}?", test.output, Enum.GetName(typeof(CrontabFieldKind), test.kind), test.specific);
+                Assert.AreEqual(test.isMatch, method.IsMatch(test.output), $"Is {test.output} a match to specific {Enum.GetName(typeof(CrontabFieldKind), test.kind)} of {test.specific}?");
             }
         }
 
@@ -293,7 +292,7 @@ namespace NCrontab.Advanced.Tests
             foreach (var test in tests)
             {
                 var method = new StepFilter(test.start, test.step, CrontabFieldKind.Day);
-                Assert.AreEqual(test.isMatch, method.IsMatch(test.input), "Is {0} a match to {1}/{2}?", test.input, test.start, test.step);
+                Assert.AreEqual(test.isMatch, method.IsMatch(test.input), $"Is {test.input} a match to {test.start}/{test.step}?");
             }
         }
 
@@ -311,7 +310,7 @@ namespace NCrontab.Advanced.Tests
             };
 
             foreach (var val in values)
-                Assert2.Throws<CrontabException>(() => new BlankDayOfMonthOrWeekFilter(val), "Ensure BlankDayOfMonthOrWeekFilter can't be instantiated with <{0}>", Enum.GetName(typeof(CrontabFieldKind), val));
+                Assert.Throws<CrontabException>(() => new BlankDayOfMonthOrWeekFilter(val), $"Ensure BlankDayOfMonthOrWeekFilter can't be instantiated with <{Enum.GetName(typeof(CrontabFieldKind), val)}>");
 
             Assert.IsTrue(new BlankDayOfMonthOrWeekFilter(CrontabFieldKind.Day).IsMatch(DateTime.Now));
             Assert.IsTrue(new BlankDayOfMonthOrWeekFilter(CrontabFieldKind.DayOfWeek).IsMatch(DateTime.UtcNow));
