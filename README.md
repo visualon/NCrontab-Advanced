@@ -1,8 +1,8 @@
 # NCrontab Advanced
 
 [![build](https://github.com/visualon/NCrontab-Advanced/actions/workflows/build.yml/badge.svg)](https://github.com/visualon/NCrontab-Advanced/actions/workflows/build.yml)
-[![github-release](https://badgen.net/github/release/visualon/NCrontab-Advanced?icon=github)](https://github.com/visualon/NCrontab-Advanced/releases/latest)
-[![nuget](https://img.shields.io/nuget/v/VisualOn.NCrontab.Advanced?label=VisualOn.NCrontab.Advanced)](https://www.nuget.org/packages/VisualOn.NCrontab.Advanced)
+[![github-release](https://img.shields.io/github/v/release/visualon/NCrontab-Advanced?logo=github)](https://github.com/visualon/NCrontab-Advanced/releases/latest)
+[![nuget](https://img.shields.io/nuget/v/VisualOn.NCrontab.Advanced?label=VisualOn.NCrontab.Advanced&logo=nuget)](https://www.nuget.org/packages/VisualOn.NCrontab.Advanced)
 [![codecov](https://codecov.io/github/visualon/NCrontab-Advanced/branch/main/graph/badge.svg?token=HA21uSD3qB)](https://codecov.io/github/visualon/NCrontab-Advanced)
 ![LICENSE](https://img.shields.io/github/license/visualon/NCrontab-Advanced)
 
