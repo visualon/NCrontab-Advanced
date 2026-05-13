@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/files/">
+    <File Path="CHANGELOG.md" />
+    <File Path="COPYING.txt" />
+    <File Path="LICENSE" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="NCrontab.Advanced.Tests/NCrontab.Advanced.Tests.csproj" />
+  <Project Path="NCrontab.Advanced/NCrontab.Advanced.csproj" />
+</Solution>
