@@ -37,6 +37,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nuget-
 
+      - uses: actions/setup-dotnet@c2fa09f4bde5ebb9d1777cf28262a3eb3db3ced7 # v5.2.0
+        with:
+          dotnet-version: 10
+          dotnet-quality: ga
+
       - name: restore
         run: dotnet restore
 
@@ -92,11 +97,11 @@ jobs:
         uses: tj-actions/git-cliff@679041f051a4d2ab452f7e5e7b0eed2abee21131 # v2.2.0
         with:
           args: --latest --strip all
-          output: "CHANGELOG.md"
+          output: 'CHANGELOG.md'
 
       - name: Create Release
         uses: ncipollo/release-action@339a81892b84b4eeb0f6e744e4574d79d0d9b8dd # v1.21.0
         with:
-          bodyFile: "CHANGELOG.md"
+          bodyFile: 'CHANGELOG.md'
           name: ${{ env.VERSION }}
           prerelease: ${{ contains(github.ref_name, '-') }}
